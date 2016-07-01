@@ -1,0 +1,10 @@
+# -*- mode: bash -*-
+alias lash='ls -laSh'
+alias t='tmux attach'
+alias tc='tmux -CC attach'
+alias fuckoff='sudo $(history -p !!)'
+
+alias xcopy='xclip -i -selection clipboard'
+alias xpaste='xclip -o -selection clipboard'
+
+alias traffic='netstat -tulp'

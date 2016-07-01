@@ -1,0 +1,40 @@
+---
+- hosts: hq
+  tasks:
+  - name: admin packages
+    package:
+      name: "{{item}}"
+      state: present
+    with_items:
+      - tmux
+      - xauth
+      - xclip
+      - htop
+      - mosh
+    become: yes
+  - name: tmux conf
+    copy:
+      src: files/tmux.conf
+      dest: ~/.tmux.conf
+  - name: bash aliases
+    copy:
+      src: files/bash_aliases
+      dest: ~/.bash_aliases
+  - name: source aliases
+    lineinfile:
+      dest: ~/.bashrc
+      line: ". ~/.bash_aliases"
+      state: present
+      insertafter: EOF
+      create: yes
+  - name: copy pythonrc
+    copy:
+      src: files/pythonrc.py
+      dest: ~/.pythonrc.py
+  - name: source pythonrc
+    lineinfile:
+      dest: ~/.bashrc
+      line: "export PYTHONSTARTUP=~/.pythonrc.py"
+      state: present
+      insertafter: EOF
+      create: yes
