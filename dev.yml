@@ -12,29 +12,21 @@
       - htop
       - mosh
     become: yes
-  - name: tmux conf
+  - name: dotfiles
     copy:
-      src: files/tmux.conf
-      dest: ~/.tmux.conf
-  - name: bash aliases
-    copy:
-      src: files/bash_aliases
-      dest: ~/.bash_aliases
-  - name: source aliases
+      src: files/{{item}}
+      dest: ~/.{{item}}
+    with_items:
+      - bash_aliases
+      - tmux.conf
+      - pythonrc.py
+  - name: source dotfiles in bashrc
     lineinfile:
       dest: ~/.bashrc
-      line: ". ~/.bash_aliases"
+      line: "{{item}}"
       state: present
       insertafter: EOF
       create: yes
-  - name: copy pythonrc
-    copy:
-      src: files/pythonrc.py
-      dest: ~/.pythonrc.py
-  - name: source pythonrc
-    lineinfile:
-      dest: ~/.bashrc
-      line: "export PYTHONSTARTUP=~/.pythonrc.py"
-      state: present
-      insertafter: EOF
-      create: yes
+    with_items:
+      - ". ~/.bash_aliases"
+      - "export PYTHONSTARTUP=~/.pythonrc.py"
