@@ -1,5 +1,5 @@
 ---
-- hosts: hq
+- hosts: all
   tasks:
   - name: admin packages
     package:
