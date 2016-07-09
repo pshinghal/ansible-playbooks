@@ -14,7 +14,7 @@
     become: yes
   - name: dotfiles
     copy:
-      src: files/{{item}}
+      src: server_config/{{item}}
       dest: ~/.{{item}}
     with_items:
       - bash_aliases
