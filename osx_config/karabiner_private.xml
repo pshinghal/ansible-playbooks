@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<root>
+  <deviceproductdef>
+    <productname>SCULPT_MOBILE</productname>
+    <productid>0x07a5</productid>
+  </deviceproductdef>
+
+  <item>
+    <name>Blue Windows Button to Mouse Button 4 (Microsoft Sculpt Ergonomic Desktop Mouse)</name>
+    <identifier>private.microsoft.sculpt_ergonomic_desktop.mouse_win_button</identifier>
+    <device_only>DeviceVendor::MICROSOFT,DeviceProduct::SCULPT_MOBILE</device_only>
+    <autogen>
+      __KeyToKey__
+      KeyCode::COMMAND_R,
+      KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5
+    </autogen>
+  </item>
+</root>
